@@ -1,6 +1,4 @@
 
-*/apikey.txt
-
 */.vscode
 
 __pycache__/
@@ -31,6 +29,7 @@ target/
 ipython_config.py
 __pypackages__/
 .env
+*.env
 .venv
 env/
 venv/
