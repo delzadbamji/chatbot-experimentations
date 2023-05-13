@@ -1,38 +1,37 @@
 
 */.vscode
 
-__pycache__/
+*/__pycache__/
 *.py[cod]
 *$py.class
 
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
+*.Python
+*/build/
+*/develop-eggs/
+*/dist/
+*/downloads/
 
-lib/
-lib64/
+*/lib/
+*/lib64/
 
-.coverage
-.coverage.*
-.cache
-.pytest_cache/
-cover/
+*.coverage
+*.coverage.*
+*.cache
+*.pytest_cache/
+*/cover/
 *.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
-target/
-.pybuilder/
-.ipynb_checkpoints
-ipython_config.py
-__pypackages__/
-.env
+*/local_settings.py
+*/db.sqlite3
+*/db.sqlite3-journal
+*/target/
+*.pybuilder/
+*.ipynb_checkpoints
+*/ipython_config.py
+*/__pypackages__/
 *.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+*.venv
+*/env/
+*/venv/
+*/ENV/
+*/env.bak/
+*/venv.bak/
