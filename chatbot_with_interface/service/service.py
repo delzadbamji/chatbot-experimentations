@@ -1,13 +1,27 @@
 import openai as ai
 import gradio as grd
 import os
+from configparser import ConfigParser
 
-ai.api_key = os.environ.get("api_key","")
+def get_api_key():
+  print("Getting api key from env...")
+  api_key = os.environ.get("api_key","")
+
+  if not api_key:
+    print("key is missing from the env")
+    print("Getting api key from config file...")
+    config_object = ConfigParser()
+    config_object.read("../../config.env")
+    api_key = config_object["KEY"]["api_key"]
+  return api_key
+
+ai.api_key = get_api_key()
 
 if not ai.api_key:
   raise Exception("Invalid API key")
 
 prompt = [{"role": "system", "content": "You are a tokenization engineer"}]
+
 
 def generate_response(user_prompt):
   prompt.append({"role": "user", "content": user_prompt})
