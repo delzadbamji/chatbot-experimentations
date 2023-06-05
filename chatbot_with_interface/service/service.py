@@ -4,8 +4,8 @@ import os
 
 ai.api_key = os.environ.get("api_key","")
 
-# if not ai.api_key:
-#   raise Exception("Invalid API key")
+if not ai.api_key:
+  raise Exception("Invalid API key")
 
 prompt = [{"role": "system", "content": "You are a tokenization engineer"}]
 
