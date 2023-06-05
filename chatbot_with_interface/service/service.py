@@ -18,7 +18,7 @@ def get_api_key():
 ai.api_key = get_api_key()
 
 if not ai.api_key:
-  raise Exception("Invalid API key")
+  raise Exception("Invalid or missing API key")
 
 prompt = [{"role": "system", "content": "You are a tokenization engineer"}]
 
