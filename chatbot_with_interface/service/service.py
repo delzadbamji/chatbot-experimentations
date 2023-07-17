@@ -1,19 +1,9 @@
 import openai as ai
 import gradio as grd
-import os
-from configparser import ConfigParser
-
-def get_api_key():
-  print("Getting api key from env...")
-  api_key = os.environ.get("api_key","")
-
-  if not api_key:
-    print("key is missing from the env")
-    print("Getting api key from config file...")
-    config_object = ConfigParser()
-    config_object.read("../../config.env")
-    api_key = config_object["KEY"]["api_key"]
-  return api_key
+import sys
+from os.path import dirname, join, abspath
+sys.path.insert(0, abspath(join(dirname(__file__), '..\\..\\')))
+from utils.utils import get_api_key
 
 ai.api_key = get_api_key()
 

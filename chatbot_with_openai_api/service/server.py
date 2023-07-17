@@ -1,11 +1,12 @@
 import openai
-import os
+import sys
+from os.path import dirname, join, abspath
+sys.path.insert(0, abspath(join(dirname(__file__), '..\\..\\')))
+from utils.utils import get_api_key
+
 
 # Set up your OpenAI API key
-openai.api_key = os.environ["api_key"]
-
-# Define your chatbot's purpose
-chatbot_prompt = "I...am the oracle. What answer do you seek?"
+openai.api_key = get_api_key()
 
 # Define your GPT-3 model and its parameters
 model_engine = "davinci"
@@ -23,15 +24,19 @@ def generate_response(prompt):
     return response.choices[0].text.strip()
 
 # Define a function to handle user input and generate a response
-def handle_user_input(user_input):
+def handle_user_input(chatbot_prompt, user_input):
+    chatbot_prompt = "You are a " + chatbot_prompt
     prompt = f"{chatbot_prompt} {user_input}"
     response = generate_response(prompt)
     return response
 
 # Define a loop to handle multiple user interactions
 while True:
-    user_input = input("> ")
+    user_purpose = input("> input role eg. software developer, doctor, financial analyst, etc. [To exit, type exit or quit]: \n")
+    if user_purpose.lower() in ["exit", "quit"]:
+        break
+    user_input = input("> input query. [To exit, type exit or quit]: \n")
     if user_input.lower() in ["exit", "quit"]:
         break
-    response = handle_user_input(user_input)
+    response = handle_user_input(user_purpose, user_input)
     print(response)
